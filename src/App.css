@@ -1,38 +1,230 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
+  display: flex;
   min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.left-half {
+  flex: 1;
+  background-color: #1a1a1a;
+}
+
+.right-half {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 30px;
+  padding: 40px;
+  padding-left: 20px;
+}
+
+.widget {
+  background-color: #252525;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* About Widget */
+.about-widget {
+  flex: 1;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  background-color: #1a1a1a;
+  padding: 8px;
+  border-radius: 25px;
+  width: fit-content;
+}
+
+.tab {
+  background-color: transparent;
+  color: #b0b0b0;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.tab.active {
+  background-color: #3a3a3a;
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tab-content {
+  color: #b0b0b0;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.tab-content p {
+  white-space: pre-line;
+}
+
+/* Gallery Widget */
+.gallery-widget {
+  flex: 1;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.gallery-title {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.gallery-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.add-image-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 2px #3a3a3a inset;
+}
+
+.add-image-btn:hover {
+  background-color: #2d2d2d;
+  box-shadow: 0 0 0 2px #4a4a4a inset;
+}
+
+.arrow-btn {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.arrow-btn:hover {
+  background-color: #3a3a3a;
+  transform: scale(1.05);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-item {
+  aspect-ratio: 4/3;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.gallery-item img:hover {
+  filter: grayscale(0%);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .app {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .left-half {
+    display: none;
+  }
+
+  .right-half {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-half {
+    padding: 20px 15px;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .gallery-controls {
+    gap: 10px;
+  }
+
+  .arrow-btn {
+    width: 40px;
+    height: 40px;
   }
 }
